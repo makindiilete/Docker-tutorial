@@ -1,0 +1,14 @@
+IMAGES
+An image contains everything an app needs to run including but not limited to : - 
+-   A cut-down OS on which the app will run on
+-   Third party libraries
+-   Application files
+-   Environment variables
+
+CONTAINER
+Once an image has been setup, we can start a container which is like a virtual machine/computer where will host this 'everything an app needs to run' i.e. an image.
+-   Provides an isolated environment 
+-   Can be stopped and restarted 
+-   Is just a process
+
+We can start/create multiple containers from the same image but each container is isolated, they do not share their content with other containers even though there is a way to view the content of a container from another container.

@@ -1,0 +1,19 @@
+Each container has their own file system which is invisible to other containers..
+TO test this out we will
+-   With two containers running, start a shell session in the first container
+-   Write something to a file and then exit
+-   Start the 2nd container and filter to see if the file name exist in the second container... U wont see this
+
+Michaelzs-Air:Docker michaelzomoakin$ docker ps
+CONTAINER ID   IMAGE       COMMAND                  CREATED       STATUS       PORTS      NAMES
+5a4d9ac03e29   react-app   "docker-entrypoint.s…"   4 hours ago   Up 4 hours   3000/tcp   blue-sky
+281c332cebbe   react-app   "docker-entrypoint.s…"   4 hours ago   Up 4 hours   3000/tcp   affectionate_sutherland
+Michaelzs-Air:Docker michaelzomoakin$ docker exec -it 5a4 sh
+/app $ echo data > data.txt
+/app $ exit
+Michaelzs-Air:Docker michaelzomoakin$ docker exec -it 281 sh
+/app $ ls | grep data
+/app $
+
+
+-   When you delete a container, it is deleted together with its file system, this is why we should not store information into the container's file system but we should store it inside VOLUME

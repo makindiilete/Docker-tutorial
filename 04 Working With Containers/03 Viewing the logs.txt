@@ -1,0 +1,90 @@
+-   We can view our containers log for debugging processes or server error
+
+#   View all running containers
+
+Michaelzs-Air:Docker michaelzomoakin$ docker ps
+
+CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS          PORTS      NAMES
+5a4d9ac03e29   react-app   "docker-entrypoint.s…"   5 minutes ago    Up 5 minutes    3000/tcp   blue-sky
+281c332cebbe   react-app   "docker-entrypoint.s…"   20 minutes ago   Up 20 minutes   3000/tcp   affectionate_sutherland
+
+#   Check the logs using the first 3 letters of the container id
+
+Michaelzs-Air:Docker michaelzomoakin$ docker logs 5a4
+
+> react-app@0.1.0 start /app
+> react-scripts start
+
+ℹ ｢wds｣: Project is running at http://172.17.0.3/
+ℹ ｢wds｣: webpack output is served from
+ℹ ｢wds｣: Content not from webpack is served from /app/public
+ℹ ｢wds｣: 404s will fallback to /
+Starting the development server...
+
+Compiled successfully!
+
+You can now view react-app in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://172.17.0.3:3000
+
+Note that the development build is not optimized.
+To create a production build, use yarn build.
+
+-   VIEW WHAT A COMMAND CAN DO
+docker logs --help
+
+Michaelzs-Air:Docker michaelzomoakin$ docker logs --help
+
+Usage:  docker logs [OPTIONS] CONTAINER
+
+Fetch the logs of a container
+
+Options:
+      --details        Show extra details provided to logs
+  -f, --follow         Follow log output : - As logs are shown in realtime, they will be updated in realtime...
+      --since string   Show logs since timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)
+  -n, --tail string    Number of lines to show from the end of the logs (default "all")
+  -t, --timestamps     Show timestamps
+      --until string   Show logs before a timestamp (e.g. 2013-01-02T13:23:37Z) or relative (e.g. 42m for 42 minutes)
+
+
+-   VIEW UPDATED LOGS IN REALTIME
+Michaelzs-Air:Docker michaelzomoakin$ docker logs -f 5a4
+
+> react-app@0.1.0 start /app
+> react-scripts start
+
+ℹ ｢wds｣: Project is running at http://172.17.0.3/
+ℹ ｢wds｣: webpack output is served from
+ℹ ｢wds｣: Content not from webpack is served from /app/public
+ℹ ｢wds｣: 404s will fallback to /
+Starting the development server...
+
+Compiled successfully!
+
+You can now view react-app in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://172.17.0.3:3000
+
+Note that the development build is not optimized.
+To create a production build, use yarn build.
+
+
+-   VIEW THE LAST n LINES OF THE LOG (Useful for pretty long logs)
+
+Michaelzs-Air:Docker michaelzomoakin$ docker logs -n 5 5a4 >> View the last 5 lines of the logs
+On Your Network:  http://172.17.0.3:3000
+
+Note that the development build is not optimized.
+To create a production build, use yarn build.
+
+-   VIEW THE LAST n LINES OF THE LOG INCLUDING TIMESTAMP
+
+Michaelzs-Air:Docker michaelzomoakin$ docker logs -n 5 -t  5a4
+2021-06-30T11:42:50.567574889Z   On Your Network:  http://172.17.0.3:3000
+2021-06-30T11:42:50.568130054Z
+2021-06-30T11:42:50.568528735Z Note that the development build is not optimized.
+2021-06-30T11:42:50.568873561Z To create a production build, use yarn build.
+2021-06-30T11:42:50.569091504Z

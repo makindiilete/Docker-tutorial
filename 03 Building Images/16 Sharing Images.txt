@@ -1,0 +1,9 @@
+You can share your images on docker hub by logging in >> Click on Creat Repository >> Give it a name and click on "Create"
+
+-   Run docker image tag  react-app makindiilete/react-app:2
+
+PUSH YOUR IMAGE TO DOCKER HUB
+-   First you have to login to docker hub >> docker login
+-   Then run 'docker push makindiilete/react-app:2'
+-   So you can go back to docker hub and refresh..
+-   Now you can pull this image on any machine and run it...

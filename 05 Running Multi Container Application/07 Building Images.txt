@@ -1,0 +1,34 @@
+All of the things we have been doing with docker so far via the terminal using docker engine under the hood can also be done with docker compose...
+
+-   Get a list of available docker compose option
+    -   In the terminal, run 'docker-compose' OR 'docker compose'
+
+-   Get all options avaialble for building an image
+    'docker compose build --help'
+
+        Michaelzs-MacBook-Air:vidly michaelzomoakin$ docker compose build --help
+        Build or rebuild services
+
+        Usage:
+          docker compose build [SERVICE...] [flags]
+
+        Flags:
+              --build-arg stringArray   Set build-time variables for services.
+          -h, --help                    help for build
+              --no-cache                Do not use cache when building the image
+              --progress string         Set type of progress output ("auto", "plain", "tty") (default "auto")
+              --pull                    Always attempt to pull a newer version of the image.
+          -q, --quiet                   Don't print anything to STDOUT
+
+
+-   Build all the available service
+
+    Run the command 'docker-compose build'
+
+Now if we run 'docker images'
+Michaelzs-MacBook-Air:vidly michaelzomoakin$ docker images
+REPOSITORY                     TAG       IMAGE ID       CREATED          SIZE
+// When we build images with docker compose, our image names are prefixed with the name of the app 'vidly' which is the name of the directory which we are currently in https://prnt.sc/1dn5q1v
+vidly_api                      latest    30ae95c60e2d   45 seconds ago   184MB
+vidly_web                      latest    8ef86a353389   4 minutes ago    299MB
+microsoft/mssql-server-linux   latest    314918ddaedf   2 years ago      1.35GB

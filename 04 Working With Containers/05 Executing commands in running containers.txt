@@ -1,0 +1,27 @@
+We can execute a command in a running container with 'docker exec'
+
+-   Inside the 'c1' container, run the 'ls' command to list all the files in the current dir
+
+Michaelzs-Air:Docker michaelzomoakin$ docker exec c1 ls
+Dockerfile
+README.md
+node_modules
+package-lock.json
+package.json
+public
+src
+yarn.lock
+
+We are getting the content of our '/app' dir because inside our dockerfile we set the WORKDIR as '/app'
+
+-   Start up a shell in the running container
+
+docker exec -it c1 sh
+
+Michaelzs-Air:Docker michaelzomoakin$ docker exec -it c1 sh
+/app $ ls
+Dockerfile         README.md          node_modules       package-lock.json  package.json       public             src                yarn.lock
+/app $ pwd
+/app
+/app $ exit >> To quit >> This will not stop our container, it will only stop the shell
+Michaelzs-Air:Docker michaelzomoakin$

@@ -1,0 +1,14 @@
+We can search for strings in a file using the 'grep' command which stands for 'global regular expression print'
+
+-   Search for the word 'hello' in file1.txt file : - 'grep hello file1.txt'.. This search is case sensitive by default.. To remove the case sensitivity, u add the '-i' command : - 'grep -i Hello file1.txt'
+-   Search for the word 'root' inside the file '/etc/passwd' : - 'grep -i root /etc/passwd'
+
+SEARCHING FROM MULTIPLE FILES
+-   Search for the word 'hello' inside file1.txt and file2.txt 
+SOLUTION 1 : - 'grep -i hello file1.txt file2.txt'
+SOLUTION 2 : - 'grep -i hello file*'
+
+SEARCHING FROM A DIRECTORY
+-   Search for the word 'hello' from the current directory : - 'grep -i -r hello .' dot means d current directory
+
+NOTE : - In linux, you can combine multiple options as one e.g. 'grep -i -r hello .' ==> 'grep -ir hello .'

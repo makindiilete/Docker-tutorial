@@ -1,0 +1,9 @@
+Now inside our Dockerfile, we need to use the RUN statement to run our npm install or any command we will normally run in our terminal session
+
+FROM node:14.17.0-alpine3.13
+WORKDIR /app
+COPY . .
+RUN npm install
+
+
+-   Now if U run 'docker run -it react-app sh' again followed by 'ls' >> We will see our node_modules again

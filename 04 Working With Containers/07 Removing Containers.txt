@@ -1,0 +1,36 @@
+
+-   Remove the c1 container
+    -   Stop a container before removal
+
+Michaelzs-Air:Docker michaelzomoakin$ docker container rm c1
+Error response from daemon: You cannot remove a running container cb91d2e6f5518247536a7fe378264d31e49c67f08bb2aac97a6147bc334ede5d. Stop the container before attempting removal or force remove
+Michaelzs-Air:Docker michaelzomoakin$ docker stop c1
+c1
+Michaelzs-Air:Docker michaelzomoakin$ docker container rm c1
+c1
+Michaelzs-Air:Docker michaelzomoakin$ docker ps
+CONTAINER ID   IMAGE       COMMAND                  CREATED       STATUS       PORTS      NAMES
+5a4d9ac03e29   react-app   "docker-entrypoint.s…"   2 hours ago   Up 2 hours   3000/tcp   blue-sky
+281c332cebbe   react-app   "docker-entrypoint.s…"   3 hours ago   Up 3 hours   3000/tcp   affectionate_sutherland
+
+-   Force remove a container without stopping it first
+docker stop -f c1
+
+-   View stopped containers
+docker ps -a
+
+-   Out of all stopped containers, show only the c1 container
+docker ps -a | grep c1
+
+-   Delete all stopped containers
+docker container prune
+
+Michaelzs-Air:Docker michaelzomoakin$ docker ps -a | grep c1
+
+Michaelzs-Air:Docker michaelzomoakin$ docker container prune
+WARNING! This will remove all stopped containers.
+Are you sure you want to continue? [y/N] y
+Deleted Containers:
+e9e5f78ea5da09122e1ce2e5323c6b53b6d6134fc892828247e0b30bffd4a39b
+
+Total reclaimed space: 4.296MB

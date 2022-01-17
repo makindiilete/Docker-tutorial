@@ -1,0 +1,4 @@
+The first step to dockerizing our app is to add a 'dockerfile' to it. 
+REMEMBER? Dockerfile contains instructions for building an image..
+
+To dockerize our app, we will be using various docker commands.. Find attached screenshot.

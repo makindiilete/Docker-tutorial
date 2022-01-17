@@ -1,0 +1,4 @@
+-   Json files ends with .json
+-   Yaml files ends with .yaml or .yml
+
+Quite often, we use yaml for configuration files and json for exchanging data between multiple computers e.g. client and server

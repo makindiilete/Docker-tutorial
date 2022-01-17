@@ -1,0 +1,33 @@
+-   With 'docker-compose up', we can start our application..
+-   Get Available options : 'docker-compose up --help'
+
+Some of the important options : -
+'docker-compose up --build' : - With this we do not need to first run 'docker-compose build' and then later run 'docker-compose up'..
+This command will combine the two together so it build the images first and then run them
+
+-   Start the containers/ run the app in the background
+'docker-compose up -d' i.e. in detached mode so we can do something else in the terminal
+
+RUNNING THE APP / STARTING THE CONTAINER
+'docker-compose up -d' >> 'docker-compose ps' : ds will show all running containers related to the current app 'vidly' while 'docker ps' will show all containers with no filter..
+
+Michaelzs-MacBook-Air:vidly michaelzomoakin$ docker-compose ps
+   Name                  Command               State            Ports
+-------------------------------------------------------------------------------
+vidly_api_1   docker-entrypoint.sh npm start   Up      0.0.0.0:3001->3001/tcp
+vidly_db_1    docker-entrypoint.sh mongod      Up      0.0.0.0:27017->27017/tcp
+vidly_web_1   docker-entrypoint.sh npm start   Up      0.0.0.0:3000->3000/tcp
+
+-   Now if we go to http://localhost:3000/, we can see our app running
+
+STOPPING THE APP
+'docker-compose down'
+
+Michaelzs-MacBook-Air:vidly michaelzomoakin$ docker-compose down
+Stopping vidly_api_1 ... done
+Stopping vidly_db_1  ... done
+Stopping vidly_web_1 ... done
+Removing vidly_api_1 ... done
+Removing vidly_db_1  ... done
+Removing vidly_web_1 ... done
+Removing network vidly_default

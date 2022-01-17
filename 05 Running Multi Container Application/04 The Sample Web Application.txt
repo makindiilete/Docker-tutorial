@@ -1,0 +1,13 @@
+Attached to this video is our sample web application containing the frontend and backend of an application..
+
+If we are to run this web app outside of docker, we will have to follow some steps : -
+1-  Run npm install inside the backend project
+2-  Run npm install inside the frontend project
+3-  Install mongodb...
+
+But with docker, we do not need to do any of these steps...
+
+If we check our root folder, we have a 'docker-compose.yml' file.. This is used to compose a multi container application and all we need to do next is run 'docker-compose up'
+
+This will pull and install all necessary things and then start a development server for you to run the application on....
+Run this port on localhost to see the web app live and interact with the app without any need installing mongodb or npm install on ur pc

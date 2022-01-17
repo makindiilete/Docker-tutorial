@@ -1,0 +1,5 @@
+If you have docker already running on your pc, it is advisable to upgrade to version 20.10.5 which is used in this course.
+
+1.  Go to https://docs.docker.com/get-docker/
+2.  Select your OS version >> Before proceeding further, check your the system requirement and ensure your PC meets these requirements in other to prevent weird issues.
+3.  After installation, start up docker, wait for it to load and run 'docker version' this prints out information for both the docker client and docker server.

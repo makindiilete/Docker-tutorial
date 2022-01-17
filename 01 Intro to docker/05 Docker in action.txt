@@ -1,0 +1,41 @@
+We will see how we can dockerize a very simple application
+1.  Open your terminal
+2.  Create a new directory 'hello-docker' >> Switch to the folder and open the folder in your Editor
+3.  Add 'app.js' file and print a console statement 'console.log("Hello docker"); 
+4.  We will assume this is our application and we will try to dockerize it
+
+DOCKERIZATION
+1.  Add a new file to the app root directory 'Dockerfile' without extension
+
+/*
+
+
+# start from a node image using alpine so dt our image size will not be too big
+FROM node:alpine
+# copy all the files in this directory into a new directory to b created in the container named 'app'
+COPY . /app
+# Command to run our app
+# CMD node /app/app.js
+# OR
+# We can set the working directory where the command sud b executed from so we wont need /app/app.js
+# all the instructions after the WORKDIR instructions assumes we are working from the /app directory
+WORKDIR /app
+CMD node app.js
+
+
+*/
+
+2.  Next we need to build our docker image
+3.  Open the terminal from the hello-docker folder and run the command 'docker build -t hello-docker .'
+the '-t' tag is use to specify a tag name to identify the image with and the . signifies it sud build from the current directory'.. u can replace with the directory path if you are not building from the current directory.
+4.  Wait for the code to execute.. Now you can list all the images on the pc to confirm if your image was created by using 'docker image ls'
+
+RUNNING A DOCKER IMAGE ON THE COMPUTER IT WAS CREATED
+On your machine wher the image was created running docker. U can run the code 'docker run hello-docker' from any directory and it should print our message to the console.
+
+RUNNING OUR IMAGE ON ANOTHER MACHINE
+To run the image on another machine, you need to publish your image to docker hub and then from another machine, you can pull it and run the app
+1.  Push your code to a github repo
+2.  Create a repo on docker hub and push your code to it
+3.  On another machine running docker or https://labs.play-with-docker.com/
+4.  Sign in and click on START >> Add a new Instance >> Get the docker hub repo name and run the command to pull "docker pull codewithmosh/hello-docker"

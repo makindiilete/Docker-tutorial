@@ -1,0 +1,7 @@
+To build our docker image, we run the command below
+
+docker build -t react-app .    --> react-app is d name of the image to build
+
+This command must be run inside the root folder of our app where the docker file is located...
+
+After Building, to run the image in a container, we run the command --> docker run -it react-app sh (shell environment) or docker run -it react-app (ds will run nodejs terminal bcos we are running base of node:14.17.0-alpine3.13)

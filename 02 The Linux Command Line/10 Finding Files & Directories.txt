@@ -1,0 +1,11 @@
+-   We have a 'find' command in linux.. If we run ds command without any argument, it list out all the files and directories available in our current directory including hidden files that 'ls' doesnt show us by default...
+-   To view hidden files and directories with 'ls', we use 'ls -a'
+-   Find all the files and folders in the '/etc' directory : - 'find /etc'
+-   Find and show only the directories in the current directory : - 'find -type d'
+-   Find and show only the files in the current directory : - 'find -type f'
+-   Find and show all files whose name start with letter 'f' : - 'find -type f -name "f*" ==> NOTE : - d search is case sensitive so using that command, a file named 'File1.txt' wont be found...
+-   Find and show all files whose name start with letter 'f' without case sensitivity : - 'find -type f -iname "F*"
+
+ASSIGNMENT
+Find all python files in this image and write the result into a file name 'pythonFiles.txt'
+SOLUTION : - find / -type f -iname "*.py" > pythonFiles.txt

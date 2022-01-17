@@ -1,0 +1,13 @@
+Now we want to setup our dockerfile
+-   Add a 'Dockerfile' to the root dir of the app
+-   We go to docker hub and search for 'node' > Clicks on 'Tags' > Search for for a node version in the search field e.g. '14.17' with cmd + f search for 'alphine' which is always the smallest size which would not take too much disc space.. So our first line of dockerFile will be 'FROM node:14.17.0-alpine3.13'
+-   Now we build a docker image base on the dockerfile using 'docker build -t react-app .'
+-   Then we can view our images on the current system using 'docker image ls' and you should find the new created image in the list...
+
+RUNNING THE IMAGE 
+-   Now we can run the image with 'docker run -it react-app'. This will start Nodejs terminal
+
+RUNNING THE IMAGE AND STARTING THE SHELL
+-   Now we can run the image with 'docker run -it react-app sh'
+
+NOTE : - In this image we do not have our app files.. We only have our alpine OS and Node... In the next videos, we will see how to copy over our application files.

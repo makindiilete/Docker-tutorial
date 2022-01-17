@@ -1,0 +1,5 @@
+-   Now we want to ensure that anytime we make a change in our code, we publish those changes immediately inside the containers so we do not need to always rebuild our images.. We will do this inside the compose file.
+
+-   Inside the backend folder, run 'npm install'
+-   Next we run 'docker-compose up' and if we head over to 'http://localhost:3001/api', we can see message that our api is running..
+-   Now we can make a change inside the 'backend/routes/index.js' file and on refresh we see our new updates after nodemon has restarted

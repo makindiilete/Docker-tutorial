@@ -1,0 +1,33 @@
+--  View all running containers
+--  Create a log file inside the first container
+--  Copy the log file from the container to the host
+
+
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                    NAMES
+c362ad65a65c   react-app      "docker-entrypoint.s…"   9 minutes ago    Up 9 minutes    0.0.0.0:5000->3000/tcp   distracted_mahavira
+82431ea76075   31c6bf056469   "docker-entrypoint.s…"   35 minutes ago   Up 35 minutes   0.0.0.0:4000->3000/tcp   pensive_buck
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ docker exec -it c36 sh
+/app $ echo hello > hello.txt
+/app $ exit
+
+
+--  COPY hello.txt from the container to the host
+
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ docker cp c36:app/hello.txt .
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ ls
+01 Intro to docker              03 Building Images              hello-docker                    section4-react-app
+02 The Linux Command Line       04 Working With Containers      hello.txt                       section4-react-app.zip
+
+--  Copy file from the host into a container
+
+    --  Create a file secret.txt in the host
+    --  Copy this file into the container
+
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ echo secret > secret.txt
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ docker cp secret.txt c36:/app
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ docker exec -it c36 sh
+/app $ ls
+Dockerfile         data               node_modules       package.json       react-app.tar      src
+README.md          hello.txt          package-lock.json  public             secret.txt         yarn.lock
+

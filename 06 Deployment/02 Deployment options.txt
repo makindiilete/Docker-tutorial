@@ -1,0 +1,17 @@
+We have two deployment options : -
+1-  Single-host deployment
+2-  Cluster deployment
+
+Advantages of single-host
+1-  Very easy to configure
+
+Disadvantages of Single-host
+1-  If our server goes offline, our application will not be aceesible
+2-  If our app goes rapidly and get 100k+ users, a single server will not be able to handle the load
+
+Advantages of cluster
+1-  High availability and scalability
+
+To run Cluster, you need orchestration tools : - Docker swarm (not popular), Kubernetes (google product)
+
+Our focus will be Single-host deployment.

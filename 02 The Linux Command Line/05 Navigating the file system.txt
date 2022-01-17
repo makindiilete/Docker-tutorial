@@ -1,0 +1,25 @@
+-   'pwd' => this shows us where we are currently in the file system
+-   'ls' => this list out all files in the currently directory
+-   'ls -1' => this change the arrangement by which the files are listed.. it list each item on a separate line.
+-   'ls -l' => this list the files in the current directory but showing more details : - 
+The first column shows the permission of this file
+The 3rd column shows the user that owns the file
+The 5th column shows d size
+The 6th column shows d date etc
+
+CHANGING DIRECTORIES
+Same with windows, to change directory, you use 'cd' follow by a relative or absolute path..
+relative path : - in our root directory, we have files like bin, root etc so if we are currently inside the root directory, changing directory to 'bin' or 'root' we can just type 'cd bin', this is relative directory.. But to change dir using absolute dir, we will need to use the complete file path e.g. 'cd /root/bin/key.txt'
+-   To navigate to the dir '/etc/apt' dir from the root directory : - 
+-   Run 'cd e' and press Tab key >> It will complete the file name since we only have one folder starting with 'e' in the root dir which is 'etc' >> next we type 'cd etc/a' but we need to press tab twice this time cos we have several folders starting with 'a'.. It will list out all the folders starting with 'a' and we can select the one we want to go to.... i.e. 'cd etc/apt/'
+-   We can check what we have in the apt dir using the 'ls' keyword : folders are printed with blue color while files are white
+
+GET OUT OF THE CURRENT DIRECTORY 
+-   Run the command 'cd ..' to go one level up
+-   Run the command 'cd ../..' to go to the root dir
+
+CHECK THE CONTENT OF ANOTHER DIRECTORY WITHOUT NAVIGATING TO THE DIRECTORY FIRST 
+-   Run 'ls relative/absolute path' e.g. 'ls bin'
+
+NAVIGATING TO THE HOME DIRECTORY OF THE CURRENTLY LOGGED IN USER 
+-   Run the command 'ls ~' >> This will navigate you to the home directory of the currently logged in user

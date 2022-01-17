@@ -1,0 +1,10 @@
+-   From the root dir, go to the home directory using the command we learnt 'cd ~'
+-   In that dir, create a new dir named 'test' ==> 'mkdir test'
+-   Rename the 'test' directory to 'docker' ==> 'mv test docker'
+-   Go to the created directory: - 'cd docker'
+-   In the 'docker' dir, create a new file 'hello.txt': - 'touch hello.txt'
+-   With the touch command, you can create multiple files in one go : - 'touch file1.txt file2.txt file3.txt'
+-   Rename 'hello.txt' file to 'hello-docker.txt' : - 'mv hello.txt hello-docker.txt'
+REMOVING FILES
+-   Remove all files that start with 'file' : - 1) rm file1.txt file2.txt file3.txt 2) rm file*
+-   Remove the docker directory : - 1) get out of the dir with 'cd ..' 2) then remove the dir with 'rm -r docker'

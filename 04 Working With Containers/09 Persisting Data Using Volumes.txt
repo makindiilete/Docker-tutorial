@@ -1,0 +1,105 @@
+We can persist our data using volumes. These volumes can be in the localhost/PC or somewhere in the cloud
+
+-- docker volume
+
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ docker volume
+
+Usage:  docker volume COMMAND
+
+Manage volumes
+
+Commands:
+  create      Create a volume
+  inspect     Display detailed information on one or more volumes
+  ls          List volumes
+  prune       Remove all unused local volumes
+  rm          Remove one or more volumes
+
+--  Create a new volume named 'app-data'
+
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ docker volume create app-data
+app-data
+
+--  Inspect the created volume 'app-data'
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ docker volume inspect app-data
+[
+    {
+        "CreatedAt": "2021-07-04T09:09:49Z",
+        "Driver": "local", ==> means ds volume was created on the host not cloud
+        "Labels": {},
+        "Mountpoint": "/var/lib/docker/volumes/app-data/_data", ==> ds is where d dir is created on the host.. for mac users, ds path doesnt exist on ur drive, it exist on a virtual machine docker runs on..
+        "Name": "app-data",
+        "Options": {},
+        "Scope": "local"
+    }
+]
+
+--  Start a container a give it our newly created volume for persisting data
+
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ docker run -d -p 4000:3000 -v app-data:/app/data react-app
+82431ea7607558211050bbbceb24a2a6dd3f1f359b827d59f7292e0a4fabdbf1
+
+-d  >> start d container in detached mode
+-p  >> map port 4000 of the host/pc to port 3000 of the container
+-v app-data:/app/data  >> Start/Create a volume app-data and map it to a directory in the file system of the container
+
+--  Start a shell section from the created container
+--  Change into the 'data' dir and try to write into the dir
+
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ docker exec -it 824 sh
+/app $ cd data
+/app/data $ echo data > data.txt
+sh: can't create data.txt: Permission denied
+
+--  We get a permission denied error because this dir was created by docker for the root user not the 'app' user we created with the dockerfile so we will not have access to write to this file... So we need to modify our dockerFile to create a 'data' directory with our 'app' user
+
+FROM node:14.17.0-alpine3.13
+#   Create a group named 'app' and create a system user named 'app'
+RUN addgroup app && adduser -S -G app app
+#   Set the created user 'app' as the current user and use it to run all the next commands
+USER app
+#   Set our working directory as /app
+WORKDIR /app
+#   Using our app user, make a directory named 'data'
+RUN mkdir data
+#   Copy all files that ends with .json i.e. package.json & package-lock.json
+COPY package*.json .
+#   Run npm install command to install all dependencies if anything has changed about our package files else use cache
+RUN npm install
+#   Copy all files inside current dir
+COPY . .
+#   Set an env var named 'API_URL'
+ENV API_URL=http://api.myapp.com/
+#   Set 3000 as the port to use to run our app
+EXPOSE 3000
+#   Execute form : - in this process, no shell or terminal is needed, it is run directly.. THIS IS RECOMMENDED
+#   This also makes it faster to clean up resources when we stop the container
+CMD ["npm", "start"]
+#   Shell form : - in this process, the container will run this in a shell terminal or command prompt
+#   CMD npm start
+
+--  So we rebuild our image with docker build -t react-app
+
+--  Then we can try to write to the directory again and it should work this time
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ docker run -d -p 5000:3000 -v app-data:/app/data react-app
+1174f768254b02a0ab180bd4d2600db0cedff660cf133db06d19c8e9d52d95d6
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ docker exec -it 117 sh
+/app $ cd data
+/app/data $ echo data > data.txt
+/app/data $
+
+
+--  Even if we delete this container, our volume will still remain
+
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ docker rm -f 117
+117
+
+--  Now lets create a new container using the command we used earlier and see if our data.txt file is still there
+
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ docker run -d -p 5000:3000 -v app-data:/app/data react-app
+c362ad65a65c62ac86acbd3961664b0d05ba934681ed1f16a8eeada42662268a
+Michaelzs-MacBook-Air:Docker michaelzomoakin$ docker exec -it c36 sh
+/app $ cd data
+/app/data $ ls
+data.txt
+

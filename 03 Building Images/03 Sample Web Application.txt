@@ -1,0 +1,1 @@
+We will dockerize a normal fresh react app with no tweak.. Just a normal create react app

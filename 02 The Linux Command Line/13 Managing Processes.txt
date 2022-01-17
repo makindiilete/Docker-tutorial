@@ -1,0 +1,7 @@
+PROCESS : - An instance of a running program...
+VIEW ALL RUNNING PROCESSES 
+-   'ps' ==> '1 pts/0    00:00:00 bash' ==> pts/0 means ds program is running on d first terminal.. if u open another terminal and run d command again, U get 'pts/1'
+-   PID - Process ID, TTY - D terminal number, TIME - D time from d cpu which its taking d program to run (Both processes are light weight so they are not taking any time, sometimes processes takes much time and you may need to kill it)
+
+KILL A PROCESS 
+-   'kill PID' i.e. 'kill 1'

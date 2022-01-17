@@ -1,0 +1,29 @@
+-   STOP THE c1 CONTAINER
+docker stop c1
+
+Michaelzs-Air:Docker michaelzomoakin$ docker ps
+CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS          PORTS                    NAMES
+cb91d2e6f551   react-app   "docker-entrypoint.s…"   52 minutes ago   Up 52 minutes   0.0.0.0:4200->3000/tcp   c1
+5a4d9ac03e29   react-app   "docker-entrypoint.s…"   2 hours ago      Up 2 hours      3000/tcp                 blue-sky
+281c332cebbe   react-app   "docker-entrypoint.s…"   2 hours ago      Up 2 hours      3000/tcp                 affectionate_sutherland
+Michaelzs-Air:Docker michaelzomoakin$ docker stop c1
+c1
+Michaelzs-Air:Docker michaelzomoakin$ docker ps
+CONTAINER ID   IMAGE       COMMAND                  CREATED       STATUS       PORTS      NAMES
+5a4d9ac03e29   react-app   "docker-entrypoint.s…"   2 hours ago   Up 2 hours   3000/tcp   blue-sky
+281c332cebbe   react-app   "docker-entrypoint.s…"   2 hours ago   Up 2 hours   3000/tcp   affectionate_sutherland
+
+-   START THE c1 CONTAINER AGAIN
+docker start c1
+
+Michaelzs-Air:Docker michaelzomoakin$ docker start c1
+c1
+Michaelzs-Air:Docker michaelzomoakin$ docker ps
+CONTAINER ID   IMAGE       COMMAND                  CREATED             STATUS         PORTS                    NAMES
+cb91d2e6f551   react-app   "docker-entrypoint.s…"   About an hour ago   Up 4 seconds   0.0.0.0:4200->3000/tcp   c1
+5a4d9ac03e29   react-app   "docker-entrypoint.s…"   2 hours ago         Up 2 hours     3000/tcp                 blue-sky
+281c332cebbe   react-app   "docker-entrypoint.s…"   3 hours ago         Up 3 hours     3000/tcp                 affectionate_sutherland
+
+-   DIFFERENCES BETWEEN docker start AND docker run
+'docker run' is used to start a container.
+'docker start' is used to start a stopped container.

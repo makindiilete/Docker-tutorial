@@ -1,0 +1,24 @@
+-   VIEW RUNNING CONTAINERS
+docker ps
+ps stands for process, a container is just a process on the computer system with its own file system....
+
+-   Start a container using our 'react-app' image
+docker run react-app
+With this mode, the container will start but you will not be able to do something else in the terminal..
+You can start the container in the background so the terminal is free to run other things
+
+-   Start a container in detached mode
+docker run -d react-app
+
+-   When a container is running, docker give each container a random name which can be found under the NAMES column
+CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS          PORTS      NAMES
+281c332cebbe   react-app   "docker-entrypoint.s…"   12 minutes ago   Up 12 minutes   3000/tcp   affectionate_sutherland
+
+So we can reference a container with this name or the id..
+
+-   Start a container giving it a specific name of your own
+docker run -d --name blue-sky react-app
+
+CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS          PORTS      NAMES
+5a4d9ac03e29   react-app   "docker-entrypoint.s…"   12 seconds ago   Up 9 seconds    3000/tcp   blue-sky
+281c332cebbe   react-app   "docker-entrypoint.s…"   14 minutes ago   Up 14 minutes   3000/tcp   affectionate_sutherland

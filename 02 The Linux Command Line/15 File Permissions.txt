@@ -1,0 +1,2 @@
+-   Enter the home dir with 'cd /home'
+-   Write 'echo hello' to a file 'deploy.sh' ==> 'echo echo hello > deploy.sh'

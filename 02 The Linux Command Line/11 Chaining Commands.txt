@@ -1,0 +1,19 @@
+There are ways to chain multiple start commands together in linux
+-   Write a command that create a dir named 'test' and right after then enter the dir and echo something on the screen : - All we need to do is type out these commands separated with semi colon ==> 'mkdir test;cd test;echo test created' NOTE: - U can optionally add space to make it more readable i.e. 'mkdir test ; cd test ; echo test created'
+-   If u run the same command again, the first command will fail and print and error that we already have a directory named 'test' but the rest command will run : - 
+mkdir: cannot create directory 'test': File exists
+test created
+
+&& operator
+-   If you want the execution to quit if any of the commands return an error instead of continuing with rest ==> to do ds, we replace the semi-colon to '&&' : - 'mkdir test && cd test && echo test created'
+
+|| operator
+-   With the || operator, if the first command pass, the second will not run but if the first fails, the second will run
+
+| (pipe) operator
+-   The pipe operator is very powerful, we can use it to transfer the result of one command to the other for execution e.g. using 'ls' list out all the content of the bin folder and use 'less' to view the result ==> 'ls /bin | less' or with 'head' 'ls /bin | head -n 5'
+
+TYPING MULTIPLE CHAINED COMMANDS BUT ON DIFFERENT LINES USING THE '\' SIGN 
+mkdir hello;\
+cd hello;\
+echo done

@@ -1,0 +1,12 @@
+Currently, even though our docker containers are running the react app on port 3000, we cannot access this port on our browser because it is not available, this is where we need to publish a port so we can run the published port in our browser...
+
+Michaelzs-Air:Docker michaelzomoakin$ docker run -d -p 4200:3000 --name c1  react-app
+cb91d2e6f5518247536a7fe378264d31e49c67f08bb2aac97a6147bc334ede5d
+Michaelzs-Air:Docker michaelzomoakin$ docker ps
+CONTAINER ID   IMAGE       COMMAND                  CREATED             STATUS             PORTS                    NAMES
+
+Port 4200 on localhost of the pc mapped to port 3000 coming from docker
+
+cb91d2e6f551   react-app   "docker-entrypoint.s…"   16 minutes ago      Up 16 minutes      0.0.0.0:4200->3000/tcp   c1
+5a4d9ac03e29   react-app   "docker-entrypoint.s…"   About an hour ago   Up About an hour   3000/tcp                 blue-sky
+281c332cebbe   react-app   "docker-entrypoint.s…"   2 hours ago         Up 2 hours         3000/tcp                 affectionate_sutherland

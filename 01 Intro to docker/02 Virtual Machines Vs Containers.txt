@@ -1,0 +1,5 @@
+VIRTUAL MACHINES
+With virtual machines, we run multiple operating system on the same PC. This gives us the benefit of running different apps with different dependencies in isolation but with disadvantages of being resource intensive and slow to start because each virtual machine will share a certain percentage of the total available ram and processor.
+
+CONTAINERS
+This gives us the same benefit as virtual machine while eliminating the disadvantages because we run on a single OS, containers are light weight and not resource intensive. And start up time is very quick... it starts up in a second.

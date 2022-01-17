@@ -1,0 +1,23 @@
+By default, docker create our app with the root user which has the ultimate privildges. This can open us up to security flaws so we will create a user with limited privileges and use it to run our app..
+
+CREATING A USER
+-   Run the command 'docker run -it alpine'
+
+
+DOCKER FILE
+FROM node:14.17.0-alpine3.13
+RUN addgroup app && adduser -S -G app app ---> Add a group named 'app' then add a system user named 'app' into the created group named 'app'
+USER app --> set the user as 'app' so all commands after this line will be using the created user (app)
+WORKDIR /app
+COPY . .
+RUN npm install
+ENV API_URL=http://api.myapp.com/
+EXPOSE 3000
+
+Rebuild the image... docker build -t react-app .
+
+
+NOW WE CAN VERIFY IF THE CURRENT USER HAS BEEN SET AS app
+-   run the command >> docker run -it react-app sh
+-   run the command >> whoami
+-   it should print 'app'

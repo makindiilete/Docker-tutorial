@@ -1,0 +1,15 @@
+VIEW ALL ENV VARIABLES IN THE SYSTEM
+-   'printenv' : - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin ==> this are directories separated by colon.. When you install programs like ngrok, python etc and u try to run the code in terminal, sometimes you get error that the command cannot be found.. these directories are where the program search for not your entire hard drive...
+VIEW THE VALUE OF A SPECIFIC ENV VARIABLE 
+-   'printenv PATH'
+VIEW THE VALUE OF AN ENV VARIABLE USING echo
+-   'echo $PATH'
+SET AN ENV VARIABLE
+-   'export DB_USER=michaelz' : - ds variable will only be available in the current terminal session so after closing the terminal (using 'exit'), the variable seize to exist...
+WRITING PERMANENT ENV VARIABLES 
+-   There is a file called '.bashrc' under 'home(cd ~)'.. This is where we write permanent envrionment variables, ds file is loaded everytime a user logs in
+-   'echo DB_USER=michaelz >> .bashrc' NOTE : - '>>' means it will append the text to the existing content of the file, single greater than will overwrite the content
+
+NOTE : - Never store sensitive info in env variable 
+NOTE : - The variables we write to 'bashrc' file will not be available until the terminal is quit and restarted because this file is loaded once when the terminal opens... Another way out is to restart the file using the 'source' command
+'source .bashrc' (ds command must be executed from the home dir or use '~/ .bashrc')

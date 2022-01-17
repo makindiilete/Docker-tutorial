@@ -1,0 +1,18 @@
+We will learn how to create a new user and login as that created user 
+-   'useradd' - add a new user
+-   'usermod' - modify an existing user
+-   'userdel' - delete a user 
+
+CREATE A USER NAMED 'john'
+-   'useradd -m john' 
+
+MODIFY THE USER 'john' TO USE '/bin/bash' INSTEAD OF '/bin/sh'
+-   'usermod -s /bin/bash john'
+
+VIEW USER PASSWORDS
+-   'cat /etc/shadow'
+
+LOGIN AS JOHN 
+-   Open a new terminal window
+-   Run the command 'docker ps' to view all active containers
+-   Then run 'docker exec -it -u john f4f0dec2a1da bash'

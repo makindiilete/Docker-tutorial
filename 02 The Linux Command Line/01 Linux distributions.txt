@@ -1,0 +1,3 @@
+Linux is an open source software and for this reason, many developers has built ontop of linux to create their own custom versions which is referred to as linux distributions..
+Each of these versions was created for a basic need e.g. running servers, desktop computers, mobile phone etc.
+In this section, we will be using Ubuntu linux distributions

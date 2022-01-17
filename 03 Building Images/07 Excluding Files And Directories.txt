@@ -1,0 +1,6 @@
+Incase you want to exclude some files and directories while copying, we will learn how to get that done here...
+
+-   Just as we always exclude nodemodules and some other files using .gitignore file, we have the same concept in docker with .dockerignore
+-   So add a .dockerignore file and exclude node_modules then rebuild again with 'docker build -t react-app .'
+-   If we check the 'transferring context' now it has reduced from 155mb to 17kb
+-   Now if we run  'docker run -it react-app sh' command again, and run 'ls', we will not see the node_modules again and then we will need to run 'npm install' to have it back

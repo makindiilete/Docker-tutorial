@@ -1,0 +1,38 @@
+Inside our root directory, we have a file name 'docker-compose.yml'
+We will rename this to '_docker-compose.yml' so we can create our compose file again from start...
+-   Add a new file 'docker-compose.yml' to the root directory
+
+
+# Get versions compatible with your docker engine version from https://docs.docker.com/compose/compose-file/
+version: "3.8"
+
+# A field where we list all the services that made up our app
+services:
+  #can be call anyname e.g. frontend
+  web:
+    # ds will build d image using a dockerfile located in the dir specified
+    build: ./frontend
+    ports:
+      # we map port 3000 of the computer localhost to port 3000 of the container
+      - 3000:3000
+  #can be call anyname e.g. backend
+  api:
+    build: ./backend
+    ports:
+      - 3001:3001
+    # Here we define our env variables... our backend will need a url of the database
+    environment:
+      DB_URL: mongodb://db/vidly
+  #can be call anyname e.g. database
+  db:
+    image: mongo:4.0-xenial
+    ports:
+       # we also map the port mongodb listens to a port on the pc so we can use this port to access mongodb via mongodb clients like mongodb compass on the pc
+      - 27017:27017
+    volumes:
+      - vidly:/data/db
+
+# Another field where we define the volumes we wanna use
+volumes:
+  vidly:
+

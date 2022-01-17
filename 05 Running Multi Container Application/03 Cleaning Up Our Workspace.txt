@@ -1,0 +1,41 @@
+Let us see a couple of techniques for cleaning up our workspace...
+
+We want to start by removing all containers at a go
+docker container rm -f $(docker container ls -aq)
+
+--  docker container ls -aq will generate all running and stopped container ids
+
+Michaelzs-MacBook-Air:section4-react-app michaelzomoakin$ docker container ls -aq
+62d4c1aa22d2
+9372e56a68e2
+c362ad65a65c
+82431ea76075
+5a4d9ac03e29
+281c332cebbe
+
+
+Michaelzs-MacBook-Air:section4-react-app michaelzomoakin$ docker container rm -f $(docker container ls -aq)
+62d4c1aa22d2
+9372e56a68e2
+5a4d9ac03e29
+281c332cebbe
+Error response from daemon: Could not kill running container c362ad65a65c62ac86acbd3961664b0d05ba934681ed1f16a8eeada42662268a, cannot remove - container c362ad65a65c PID 4207 is zombie and can not be killed. Use the --init option when creating containers to run an init inside the container that forwards signals and reaps processes
+Error response from daemon: Could not kill running container 82431ea7607558211050bbbceb24a2a6dd3f1f359b827d59f7292e0a4fabdbf1, cannot remove - container 82431ea76075 PID 3156 is zombie and can not be killed. Use the --init option when creating containers to run an init inside the container that forwards signals and reaps processes
+
+
+REMOVING ALL IMAGES
+Michaelzs-MacBook-Air:section4-react-app michaelzomoakin$ docker image rm -f b71 31c 7e0 3d9
+Untagged: react-app:latest
+Deleted: sha256:b71e042ae849b87de0c43c85b3753fbf10c2f8c5f97cdd90d83478a618d4cbd0
+Deleted: sha256:31c6bf05646939a526d783fbe8fc363233f0d98ef8a28ae25d92462cc06e0cdb
+Untagged: ubuntu:latest
+Untagged: ubuntu@sha256:cf31af331f38d1d7158470e095b132acd126a7180a54f263d386da88eb681d93
+Deleted: sha256:7e0aa2d69a153215c790488ed1fcec162015e973e49962d438e18249d16fa9bd
+Deleted: sha256:3dd8c8d4fd5b59d543c8f75a67cdfaab30aef5a6d99aea3fe74d8cc69d4e7bf2
+Deleted: sha256:8d8dceacec7085abcab1f93ac1128765bc6cf0caac334c821e01546bd96eb741
+Deleted: sha256:ccdbb80308cc5ef43b605ac28fac29c6a597f89f5a169bbedbb8dec29c987439
+Untagged: node:alpine
+Untagged: node@sha256:fc24d15ecf126b8e6dd954198159407261a780c7684b944c8556f5ddb8bee580
+Deleted: sha256:3d9a0ea05233c1eb23d2500acd806ece3a94a1c04d61c171c50392ed47b0a5f8
+
+ANOTHER WAYS IS TO OPEN DOCKER DESKTOP > Preferences > Click on the Troubleshoot icon like bug on the top right > Click on Clean / Purge data

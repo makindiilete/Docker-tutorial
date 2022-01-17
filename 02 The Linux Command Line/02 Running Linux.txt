@@ -1,0 +1,18 @@
+-   Go to hub.docker.com and search for 'ubuntu'
+-   There u will see the command to pull the ubuntu image but we will not be using this command instead we will use 'docker run ubuntu', if we have this image locally, docker will try to create a container with it else it will try to pull this image behind the scene and start a container with it....
+-   Running the command 'docker run ubuntu', we see we do not get anything after running the command, this is because we did not start the container in interactive mode...
+-   To run the command in interactive mode, we run the command 'docker run -it ubuntu'
+-   This will start a shell using the ubuntu operating system i.e. It will start a command prompt using the ubuntu OS.
+-   root = root user
+-   f4f0dec2a1da = container id 
+-   / = root directory
+-   # = means u av highest privileges bcos U r logged in as root user else U will have a $ sign
+
+COMMANDS
+-   Print statement = 'echo hello' --> prints 'hello' on the screen
+-   Show the current user = 'whoami'
+-   Show d location of the shell program --> 'echo $0'
+-   linux is case sensitive
+-   Using the up and down arrow, you can re-execute earlier commands 
+-   'history' list out all d commands uve used previously
+-   After history, u can use exclamation mark follow by the command number to re-execute the command

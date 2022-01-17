@@ -1,0 +1,47 @@
+# Get versions compatible with your docker engine version from https://docs.docker.com/compose/compose-file/
+version: "3.8"
+
+# A field where we list all the services that made up our app
+services:
+  #can be call anyname e.g. frontend
+  web:
+    # ds will build d image using a dockerfile located in the dir specified
+    build: ./frontend
+    ports:
+      # we map port 3000 of the computer localhost to port 3000 of the container
+      - 3000:3000
+    volumes:
+      - ./frontend:/app
+# This will be our test service to run the tests using our web service container
+  web-tests:
+    # here we are not using 'build' because we do not want to build a new image but use the existing web image
+    image: vidly_web
+    volumes:
+      - ./frontend:/app
+    # here we override the npm start command to run npm test instead
+    command: npm test
+  #can be call anyname e.g. backend
+  api:
+    build: ./backend
+    ports:
+      - 3001:3001
+    # Here we define our env variables... our backend will need a url of the database
+    environment:
+      DB_URL: mongodb://db/vidly
+    volumes:
+      - ./backend:/app
+  #  command: ./wait-for db:27017 && migrate-mongo up && npm start
+  # OR write an entrypoint script like that inside ./backend/docker-entrypoint.sh which already have all the codes to execute
+    command: ./docker-entrypoint.sh
+  #can be call anyname e.g. database
+  db:
+    image: mongo:4.0-xenial
+    ports:
+       # we also map the port mongodb listens to a port on the pc so we can use this port to access mongodb via mongodb clients like mongodb compass on the pc
+      - 27017:27017
+    volumes:
+      - vidly:/data/db
+
+# Another field where we define the volumes we wanna use
+volumes:
+  vidly:

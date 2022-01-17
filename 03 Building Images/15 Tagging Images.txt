@@ -1,0 +1,11 @@
+If we have noticed, the 'TAG' column of our images always contain 'latest', when we create a new image or pull from docker hub this is just a label and it does not mean that this is always the latest, sometimes latest might be pointing to the older version of an image.
+In production or staging environment, we should not use 'latest' as our TAG, this should only be used for development purposes because using this in production or staging environment, we cannot easily troubleshoot issues if something goes wrong because you do not know what version you are really running in production.. So you should always use explicit tags in your staging and production environment...
+
+HOW TO TAG IMAGE
+We can tag image during build using the code 'docker build -t react-app:1 .' where :1 can be the version to use..
+
+HOW TO REMOVE A TAG
+docker image rm react-app:1
+
+HOW TO TAG AN IMAGE AFTER BUILD
+docker image tag react-app:latest react-app:1 (current tag, new tag)

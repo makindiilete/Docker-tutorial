@@ -1,0 +1,27 @@
+-   With 'docker-compose logs', we can view all the logs of all the running containers/services in one place (Check attached screenshot)
+
+-   logs options
+Michaelzs-MacBook-Air:vidly michaelzomoakin$ docker-compose logs --help
+View output from containers.
+
+Usage: logs [options] [--] [SERVICE...]
+
+Options:
+    --no-color              Produce monochrome output.
+    -f, --follow            Follow log output. // see logs in realtime as they come
+    -t, --timestamps        Show timestamps.
+    --tail="all"            Number of lines to show from the end of the logs
+                            for each container.
+    --no-log-prefix         Don't print prefix in logs.
+
+-   View only the logs from a specific container....
+
+Michaelzs-MacBook-Air:vidly michaelzomoakin$ docker ps
+CONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS          PORTS                      NAMES
+097190f38a54   vidly_web          "docker-entrypoint.s…"   24 minutes ago   Up 24 minutes   0.0.0.0:3000->3000/tcp     vidly_web_1
+17857a6c8b74   mongo:4.0-xenial   "docker-entrypoint.s…"   24 minutes ago   Up 24 minutes   0.0.0.0:27017->27017/tcp   vidly_db_1
+a7330a179ac1   vidly_api          "docker-entrypoint.s…"   24 minutes ago   Up 24 minutes   0.0.0.0:3001->3001/tcp     vidly_api_1
+
+# View logs from web service
+Michaelzs-MacBook-Air:vidly michaelzomoakin$ docker logs 097
+

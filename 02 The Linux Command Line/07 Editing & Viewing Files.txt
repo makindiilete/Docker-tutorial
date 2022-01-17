@@ -1,0 +1,13 @@
+-   We can view file e.g. our txt files we created by making use of the nano package we earlier installed but later removed...
+-   So we install it again with 'apt install nano' and then create a text file with nano using "nano file.txt"... This will create a text document that will be saved with 'file1.txt' >> So type inside this file and save with Ctrl + X >> Press enter
+-   To view the content of the created file, use 'cat file1.txt' cat - concatenate
+NOTE : - 'cat' is useful when dealing with file with short content, if our file contains long contents then it is better to use 'more' e.g.
+-   The file '/etc/adduser.conf' is a file with a very long texts >> Viewing the content with cat will display the content all at once which will not be easy to read 'cat /etc/adduser.conf' but with 'more /etc/adduser/conf' it will be displayed in a readable format with option to read more below the screen... And by pressing 'Space' we can go to the next page or 'Enter' to go one line at a time.
+-   NOTE : - D problem with 'more' is that we can only scroll down, we cannot scroll up.. To be able to scroll up, we can exit the more screen by pressing 'q' and then install another package 'less' with 'apt install less'
+-   View the same file using less command 'less /etc/adduser.conf'
+-   Using the UP or DOWN ARROW keys, we can scroll up or down to read the long file...
+-   We can go to the next page with SPACE key or next line with ENTER key and exit with 'q'
+SHOW THE FIRST 5 LINES OF A FILE 
+-   Run the command 'head -n 5 /etc/adduser.conf'
+SHOW THE LAST 5 LINES OF A FILE 
+-   Run the command 'tail -n 5 /etc/adduser.conf'

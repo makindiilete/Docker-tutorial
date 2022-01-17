@@ -1,0 +1,12 @@
+What is docker?
+Docker is a platform for building, running and shipping applications in a consistent manner. Docker ensure an app can run on any machine the same way it runs on your local.
+Docker try to eliminate stress from scenario where an application works on your machine but does not in other people's machine which can be because of various reasons namely :  -
+1.  One or more files are missing
+2.  Software version mismatch e.g. Your application needs node version 14 but the system is running on node version 9.
+3.  Different configuration settings e.g. Environment variables different across machines.
+
+With docker, we package our app with all the dependencies it needs to run successfully and run it anywhere on any machine with docker. So if the app relies on Node 14 and MongoDb 4 to run, all this will be included in the application setup files. And this package can be run on any machine with docker
+
+With docker, if anyone joins your team, they do not need to spend entire day setting up their machines to work with your applications, they do not need to install and configure all these dependencies. They just tell docker to bring up the app using and docker will download all the setup files inside an isolated Environment called 'Container'.. 
+
+When we are done working on an app and we do not need it anymore, we can remove it in one go and the app and all the dependencies will be removed, this gives us a great benefit over normal app installation on hard drive where as we uninstall the app, we start to check which of its dependencies we need to remove and in that process we might uninstall a dependencies that is currently being used by another app thereby making the other app not working anymore.

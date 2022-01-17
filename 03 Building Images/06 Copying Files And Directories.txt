@@ -1,0 +1,21 @@
+Now that we have a base image, the next step is to copy the application files into the base image..
+-   We can copy using wither COPY or ADD.. ADD comes with some additional features which we will talk about later
+
+FROM node:14.17.0-alpine3.13
+WORKDIR /app  >> Set a working dir
+COPY . .  >> Copy everything inside the root dir into the working directory
+COPY ["hello world.txt", "."]  >> Use ds syntax instead of the one above if you want to copy file with space in the file name
+
+ADD features
+-   ADD http://.../file.json . >> Copying a file from the internet into our image
+-   ADD file.zip . >> If u pass a compress file, add will automatically uncompress it and pass it into our image
+
+*   FOR BEST PRACTICE, STICK WITH COPY because it is straight-forward and there is no magic around it..
+FROM node:14.17.0-alpine3.13
+WORKDIR /app
+COPY . .
+
+
+
+-   Next we rebuild the image 'docker build -t react-app .'
+-   Next start the container in shell env with 'docker run -it react-app sh'

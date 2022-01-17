@@ -1,0 +1,65 @@
+Just the same way we use entity framework in dotnet to add database migrations to update database tables, we have the same concept in every task including nodejs and mongodb.. We can use a package called 'migrate-mongo' to execute our database migrations...
+
+-   Inside './backend/migrate-mongo-config.js' file we have the setup to carry our migrations
+-   Inside './backend/migrations' folder, we have migration files..
+
+-   To run the migration
+ "scripts": {
+    "db:up": "migrate-mongo up",
+    "start": "nodemon --ignore './tests' index.js",
+    "test": "jest --watchAll --colors"
+  },
+
+-   Inside the package.json file under the script object, we have 'db:up', so to run migrations, we can use :
+'npm run db:up' OR 'migrate-mongo up'
+
+-   RUNNING MIGRATIONS FROM COMPOSE FILE : - This way, migrations are automatically run when we startup our apps
+
+-   We overite the 'npm start' command inside Dockerfile with another one that will perform all the functions we need to perform before running npm start
+-   Next we run 'docker-compose down' to remove all our services
+-   Next we run 'docker volume ls' to view our volumes and we remove d vidly volume
+-   Next we run 'docker volume rm vidly_vidly' to remove our volume
+
+Michaelzs-MacBook-Air:vidly michaelzomoakin$ docker-compose down
+Removing vidly_web_1 ... done
+Removing vidly_api_1 ... done
+Removing vidly_db_1  ... done
+Removing network vidly_default
+
+Michaelzs-MacBook-Air:vidly michaelzomoakin$ docker volume ls
+DRIVER    VOLUME NAME
+local     app-data
+local     c8b4c3e3f607804dc0df1587579e5f68c8847aa41e588ac40eb3dbc8a5505ff8
+local     d48b293f026347439bdca04bd79cf4d03ef1008fbaae26141426a0e010f9dc1f
+local     vidly_vidly
+
+Michaelzs-MacBook-Air:vidly michaelzomoakin$ docker volume rm vidly_vidly
+vidly_vidly
+Michaelzs-MacBook-Air:vidly michaelzomoakin$ docker volume ls
+DRIVER    VOLUME NAME
+local     app-data
+local     c8b4c3e3f607804dc0df1587579e5f68c8847aa41e588ac40eb3dbc8a5505ff8
+local     d48b293f026347439bdca04bd79cf4d03ef1008fbaae26141426a0e010f9dc1f
+
+-   Next we can create all our services again and head over to 'http://localhost:3001/api/movies'
+This sud return : -
+[
+  {
+    "_id": "60f7d5b2cc3159001bd02491",
+    "title": "Avatar"
+  },
+  {
+    "_id": "60f7d5b2cc3159001bd02492",
+    "title": "Star Wars"
+  },
+  {
+    "_id": "60f7d5b2cc3159001bd02493",
+    "title": "Terminator"
+  },
+  {
+    "_id": "60f7d5b2cc3159001bd02494",
+    "title": "Titanic"
+  }
+]
+
+-   The frontend at 'http://localhost:3000/' should show all ds movies

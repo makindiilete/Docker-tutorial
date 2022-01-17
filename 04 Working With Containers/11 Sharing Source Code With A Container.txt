@@ -1,0 +1,9 @@
+Let us see how we can publish our application changes... That is when we run our react app in docker and we can access it on the host from the port we have published, any changes we make will not reflect until we rebuild the image again which can be a pain in the ass so instead we can do directory mapping so every change will instatly be updated in the docker container
+
+--  $(pwd) >> Compute the present working dir and display the result
+
+Michaelzs-MacBook-Air:section4-react-app michaelzomoakin$ docker run -d -p 5001:3000 -v $(pwd):/app react-app
+62d4c1aa22d2bc37dd0f36468902a5075a929c3039d0daed6047d544cf5e5f38
+Michaelzs-MacBook-Air:section4-react-app michaelzomoakin$ docker logs -f 62d
+
+-- So now if we visit http://localhost:5001/ , our app loads and any changes we make instanly reflects..

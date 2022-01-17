@@ -1,0 +1,31 @@
+Docker file
+
+FROM node:14.17.0-alpine3.13
+#   Create a group named 'app' and create a system user named 'app'
+RUN addgroup app && adduser -S -G app app
+#   Set the created user 'app' as the current user and use it to run all the next commands
+USER app
+#   Set our working directory as /app
+WORKDIR /app
+#   Copy all files inside current dir
+COPY . .
+#   Run npm install command to install all dependencies
+RUN npm install
+#   Set an env var named 'API_URL'
+ENV API_URL=http://api.myapp.com/
+#   Set 3000 as the port to use to run our app
+EXPOSE 3000
+#   Execute form : - in this process, no shell or terminal is needed, it is run directly.. THIS IS RECOMMENDED
+#   This also makes it faster to clean up resources when we stop the container
+CMD ["npm", "start"]
+#   Shell form : - in this process, the container will run this in a shell terminal or command prompt
+#   CMD npm start
+
+
+
+
+NOTE : - It it not advisable to have multiple 'CMD' commands inside a docker file because in such scenario, only the last one will be executed and the previous ones will be ignored...
+
+DIFFERENCE BETWEEN RUN AND CMD
+We can use both to run a specific instructions but the RUN command is a build time command e.g. When building the image
+While the CMD command is a run time command i.e. do something after the container has started

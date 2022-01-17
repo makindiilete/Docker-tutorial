@@ -1,0 +1,32 @@
+You have worked with many popular package managers like npm, nuget, yarn etc.. In ubuntu, we use a package manager called 'apt' (Advanced package tool).
+-   We can run the code 'apt' in our ubuntu terminal to get list of available commands we can use with it.
+-   There is another package manager called 'apt-get' which you see in online tutorials but we will be using 'apt' because its easier to work with.
+
+INSTALLING NANO
+Nano is a text editor for ubuntu.. if we try to install it by running the command 'apt install nano' >> We get an error message 'Unable to locate package nano'...
+WHY? In linux OS, we have a package database which might contains hundreds of packages but not all these packages are installed..
+VIEW ALL THE AVAILABLE PACKAGES IN THE DATABASE
+-   Run the command 'apt list'
+-   If we check the list of the packages listed, we will see that 'nano' is not present as one of the packages. This is why we got an error when we try to install 'nano' so we need to update our package database using the command below
+UPDATING PACKAGE DATABASE
+-   Run the command 'apt update'
+-   After updating the package database, if we run 'app list' again, we will get more packages than what we had initially and most of them are not locally installed unlike the first time we run command, so we can install anyone of them locally by running the command 'apt install nano'... And nano will be installed...
+
+TAKE AWAY
+Before installing any package, first run 'apt update' to update the database and then you can install the package e.g. 'apt install nano'.
+
+TESTING NANO
+We can test the package we installed to ensure its installed properly by running a command with the package name i.e. 'nano'
+
+REMOVING A PACKAGE (nano)
+-   Run the command 'apt remove nano'
+-   It will remove the nano package and if we then run the command 'nano' again, we get this message 'bash: /usr/bin/nano: No such file or directory'
+
+ASSIGNMENT
+-   We do not have python as a package currently so install it, make sure it works and then remove it
+
+SOLUTION
+-   apt update
+-   apt install python
+-   python
+-   apt remove python-is-python2

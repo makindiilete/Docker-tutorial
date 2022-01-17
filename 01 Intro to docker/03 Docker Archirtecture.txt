@@ -1,0 +1,3 @@
+Docker uses a client to server architecture where the client talks to the server via restful api...
+The server is also called the DOCKER ENGINE and it sits in the background taking care of running and building containers.
+On your computer e.g. on windows task manager, you have many running processes, a container is just one of this process but a special kind of process which we will talk about soon.

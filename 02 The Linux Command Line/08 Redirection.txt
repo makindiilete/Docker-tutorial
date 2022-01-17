@@ -1,0 +1,16 @@
+Another important concept in linux is the concept of standard input and output.. Where input is the keyboard and output is the screen. We can always change the source of this input and output and this is what we call REDIRECTION. 
+OUTPUT REDIRECTION EXAMPLE
+When we read the content of a file with the 'cat' command, the content of that file is printed on the screen being the standard output.. We can redirect the output to print the content of that file into another file instead of the screen so this will copy the content and paste it in another file..
+-   cat file1.txt > file2.txt (print the content of file1.txt into file2.txt where '>' is the redirection sign)
+-   We can read the content of both files (file1.txt & file2.txt) at once with 'cat file1.txt file2.txt'
+-   Now instead of printing the content of the two files on the screen, we can print it inside another file named 'combined.txt' : - 'cat file1.txt file2.txt > combined.txt'.
+    The redirection command is not limited to the 'cat' keyword alone, it can be used anywhere e.g. with the 'echo' command e.g. 'echo hello > hello.txt'.. So instead of using the nano package to write to a file, we can use 'echo' and the redirection command.
+
+ASSIGNMENT
+Print a long detailed list of the content of the 'etc' file and redirect it to a file. 
+SOLUTION
+ls -l /etc > files.txt
+cat files.txt
+
+NOTE
+As u use the greater than symbol '>' to redirect the standard output, you can use the less than symbol '<' to redirect the standard input but usecases for this is very few...

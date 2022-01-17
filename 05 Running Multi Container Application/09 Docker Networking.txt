@@ -1,0 +1,49 @@
+When we run our application with docker compose, docker compose will automatically create a network and add our containers on that network so these containers can talk to each other..
+
+-   Bring the app up one more time in detached mode 'docker-compose up -d'
+Docker Compose is now in the Docker CLI, try `docker compose up`
+
+// A network was created named 'vidly_default'..
+Creating network "vidly_default" with the default driver
+Creating vidly_db_1  ... done
+Creating vidly_api_1 ... done
+Creating vidly_web_1 ... done
+
+-   View list of docker networks on the machine
+
+Michaelzs-MacBook-Air:vidly michaelzomoakin$ docker network ls
+NETWORK ID     NAME            DRIVER    SCOPE
+c88f54520f73   bridge          bridge    local
+211017e7ed6e   host            host      local
+600804bc22aa   none            null      local
+6a4adb4318d8   vidly_default   bridge    local // d one we created : -  ds network contains 3 services : web, api, db (services we specified inside docker compose)
+
+-   So each of these services available inside the nwtwork can talk to each other using their names
+
+-   Run 'docker ps' to view available containers
+
+Michaelzs-MacBook-Air:vidly michaelzomoakin$ docker ps
+CONTAINER ID   IMAGE              COMMAND                  CREATED         STATUS         PORTS                      NAMES
+097190f38a54   vidly_web          "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   0.0.0.0:3000->3000/tcp     vidly_web_1
+17857a6c8b74   mongo:4.0-xenial   "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   0.0.0.0:27017->27017/tcp   vidly_db_1
+a7330a179ac1   vidly_api          "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   0.0.0.0:3001->3001/tcp     vidly_api_1
+
+-   PING (talk to) the 'api' service from the web service using the container id of the web service
+
+Michaelzs-MacBook-Air:vidly michaelzomoakin$ docker ps
+CONTAINER ID   IMAGE              COMMAND                  CREATED         STATUS         PORTS                      NAMES
+097190f38a54   vidly_web          "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   0.0.0.0:3000->3000/tcp     vidly_web_1
+17857a6c8b74   mongo:4.0-xenial   "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   0.0.0.0:27017->27017/tcp   vidly_db_1
+a7330a179ac1   vidly_api          "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   0.0.0.0:3001->3001/tcp     vidly_api_1
+
+# we started a shell (sh) in interactive mode (-it) from the web service image
+# '-u root' logged us in as d root user
+
+Michaelzs-MacBook-Air:vidly michaelzomoakin$ docker exec -it -u root 097 sh
+/app # ping api
+PING api (172.18.0.2): 56 data bytes
+64 bytes from 172.18.0.2: seq=0 ttl=64 time=0.412 ms
+64 bytes from 172.18.0.2: seq=1 ttl=64 time=0.165 ms
+
+
+

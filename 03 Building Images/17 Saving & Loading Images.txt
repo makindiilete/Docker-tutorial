@@ -1,0 +1,15 @@
+Saving and loading images is a scenario when you want to move and image from one machine to another without going through docker hub..
+In this case you can save the image as a compressed file and load it on the other machine...
+
+SAVING
+docker image save -o react-app.tar react-app (.tar in linux is like .zip in windows)
+
+It will take a while and when its done, we can check the root folder of our app and we will see the .tar file
+
+
+LOADING IMAGES
+Now lets delete our react-app and try to load it back from the tar file
+
+-   docker image rm react-app
+-   to load --> docker image load -i react-app.tar
+-   Now we can verify it with 'docker images'

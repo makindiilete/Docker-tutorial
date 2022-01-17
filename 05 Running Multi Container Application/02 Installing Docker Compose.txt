@@ -1,0 +1,8 @@
+Docker compose makes it incredibly easy to start up applications with multiple containers...
+You can find installation instructions from https://docs.docker.com/compose/install/ but for windows and macOS, it is shipped with Docker desktop so you should have it by default..
+
+VERIFY DOCKER COMPOSE INSTALLED VERSION
+'docker-compose -v'
+
+Michaelzs-MacBook-Air:section4-react-app michaelzomoakin$ docker-compose -v
+docker-compose version 1.29.0, build 07737305

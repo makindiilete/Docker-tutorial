@@ -1,0 +1,8 @@
+VIEW ALL CURRENTLY RUNNING CONTAINERS
+'docker ps'
+
+VIEW ALL CONTAINERS INCLUDING EXITED(NOT RUNNING) CONTAINERS 
+'docker ps -a'
+
+START A CONTAINER
+'docker start -i containerID(u can type d first few letters and press tab if there are no other containers with that same starting characters)'
